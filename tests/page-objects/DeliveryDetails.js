@@ -1,4 +1,6 @@
 import { expect } from "@playwright/test";
+import { deliverFillDetails } from "../../data/deliveryDetails";
+
 
 export class DeliverDetails {
     constructor( page ) {
@@ -11,24 +13,25 @@ export class DeliverDetails {
         this.countryDropdown =this.page.locator('[data-qa="country-dropdown"]')
     }
 
-    fillDetails = async () => {
+    fillDetails = async ( deliverFillDetails ) => {
+        const { firstName, lastName, street, zipCode, city, country } = deliverFillDetails
         await this.firstName.waitFor()
-        await this.firstName.fill('Demo')
+        await this.firstName.fill(firstName)
 
         await this.lastName.waitFor()
-        await this.lastName.fill('Test')
+        await this.lastName.fill(lastName)
 
         await this.street.waitFor()
-        await this.street.fill('123 Demo dr.')
+        await this.street.fill(street)
 
         await this.zipCode.waitFor()
-        await this.zipCode.fill('07123')
+        await this.zipCode.fill(zipCode)
 
         await this.city.waitFor()
-        await this.city.fill('Demo City')
+        await this.city.fill(city)
 
         await this.countryDropdown.waitFor()
-        await this.countryDropdown.selectOption('United States of America')
+        await this.countryDropdown.selectOption(country)
 
         await this.page.pause()
     }
