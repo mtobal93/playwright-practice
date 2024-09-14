@@ -4,6 +4,8 @@ import { Navigation } from "./page-objects/navigation";
 import { Checkout } from "./page-objects/Checkout";
 import { LoginPage } from "./page-objects/LoginPage";
 import { RegisterPage } from "./page-objects/RegisterPage";
+import { DeliverDetails } from "./page-objects/DeliveryDetails";
+
 
 
 
@@ -30,4 +32,7 @@ test.only('New User Full Journey', async ({ page }) => {
 
     const registerPage = new RegisterPage(page)
     await registerPage.registerMe()
+
+    const deliverDetails = new DeliverDetails(page)
+    await deliverDetails.fillDetails()
 })
