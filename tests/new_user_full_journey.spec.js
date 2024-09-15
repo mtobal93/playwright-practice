@@ -6,6 +6,7 @@ import { LoginPage } from "./page-objects/LoginPage";
 import { RegisterPage } from "./page-objects/RegisterPage";
 import { DeliverDetails } from "./page-objects/DeliveryDetails";
 import { deliverFillDetails } from "../data/deliveryDetails";
+import { PaymentPage } from "./page-objects/PaymentPage";
 
 
 
@@ -37,4 +38,10 @@ test.only('New User Full Journey', async ({ page }) => {
 
     const deliverDetails = new DeliverDetails(page)
     await deliverDetails.fillDetails(deliverFillDetails)
+    await deliverDetails.saveDetails()
+    await deliverDetails.continueToPayment()
+
+    const paymentPage = new PaymentPage(page)
+    await paymentPage.activateDiscount()
+
 })

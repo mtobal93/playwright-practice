@@ -32,7 +32,7 @@ export class Checkout {
 	};
 
 	continueToCheckout = async () => {
-		await this.continueCheckoutButton.waitFor();
+		await this.continueCheckoutButton.waitFor(); 
 
 		await this.continueCheckoutButton.click();
 		await this.page.waitForURL(/\/login/, { timeout: 3000 });
